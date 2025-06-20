@@ -1,9 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.8.21"
+    kotlin("jvm") version "2.1.21"
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    kotlin("plugin.serialization") version "1.9.22"
+    kotlin("plugin.serialization") version "2.1.21"
     id("idea")
     id("net.minecrell.plugin-yml.bukkit") version "0.5.3"
     id("java-library")

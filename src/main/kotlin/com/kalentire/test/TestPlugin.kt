@@ -28,4 +28,7 @@ class TestPlugin : RavinPluginKotlin() {
         TestCommand(this).register() // this is all that is needed to create a command.
         // this code is executed after loadmodules()
     }
+
+    // todo and when you're all done you can assemble the
+    //  plugin jar with the gradle task `build`
 }
