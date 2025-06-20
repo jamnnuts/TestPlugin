@@ -24,6 +24,7 @@ class TestPlugin : RavinPluginKotlin() {
     }
 
     override fun loadCommands() {
+        // for every command you register, you must add it to the top level build.gradle.kts at the bottom.
         TestCommand(this).register() // this is all that is needed to create a command.
         // this code is executed after loadmodules()
     }

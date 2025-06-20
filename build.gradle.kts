@@ -68,18 +68,18 @@ tasks {
     }
 
     jar {
-        archiveFileName.set("HeroBar-parent.jar")
-        archiveBaseName.set("HeroBar-parent")
+        archiveFileName.set("$name-parent.jar")
+        archiveBaseName.set("$name-parent")
         archiveVersion.set(null as String?)
         archiveClassifier.set("original")
     }
 
     shadowJar {
-        archiveFileName.set("HeroBar.jar")
-        archiveBaseName.set("HeroBar")
+        archiveFileName.set("$name.jar")
+        archiveBaseName.set(name)
         archiveVersion.set(null as String?)
         archiveClassifier.set("")
-        relocate("com.ravingarinc.api", "com.herocraftonline.herobar.libs.api")
+        relocate("com.ravingarinc.api", "$group.libs.api")
     }
 
 
@@ -89,8 +89,8 @@ tasks {
 
     register<Copy>("copyToDev") {
         from(shadowJar)
+        // todo change this to your test server directory
         into(project.layout.projectDirectory.dir("../../Desktop/Programming/Servers/Latest/plugins"))
-        //into "E:/Documents/Workspace/Servers/1.18.2-TEST/plugins/"
     }
 
     assemble {
@@ -124,10 +124,10 @@ tasks.withType<KotlinCompile> {
 
 bukkit {
 
-    name = "TestPlugin"
+    name = "$name"
     version = project.version as String
     description = "Put the description here"
-    main = "com.kalentire.test.TestPlugin"
+    main = "$group.TestPlugin"
 
     // API version (should be set for 1.13+)
     apiVersion = "1.20"
@@ -136,10 +136,9 @@ bukkit {
     author = "RAVINGAR"
 
     commands {
-        register("skills") {
-            permission = "herobar.skills"
-            description = "Open the skill menu!"
-            usage = "Unknown argument. Try /herobar:skills"
+        register("test") {
+            description = "A description for spigot."
+            usage = "Unknown argument. Try /test ?"
         }
     }
 }
