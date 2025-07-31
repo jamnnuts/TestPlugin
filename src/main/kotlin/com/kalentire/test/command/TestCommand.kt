@@ -8,8 +8,10 @@ import net.kyori.adventure.identity.Identity
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.event.ClickEvent
 import net.kyori.adventure.text.format.NamedTextColor
+import org.apache.commons.lang3.math.NumberUtils
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.Location
 import org.bukkit.entity.Player
 
 /**
@@ -34,6 +36,7 @@ class TestCommand(plugin: RavinPlugin) : BaseCommand(plugin, "test", null) {
             // sender is either a player or the server console
 
             if(sender is Player) {
+
                 // do player things.
             }
             plugin.reload()
@@ -61,7 +64,7 @@ class TestCommand(plugin: RavinPlugin) : BaseCommand(plugin, "test", null) {
             args[1] = "example"
             args[2] = "<option>" (or rather whatever extra argument the player input here.
              */
-            val option = args[2] // do somethign with argument. The values in this array will always be strings
+            val option = args[1] // do somethign with argument. The values in this array will always be strings
             sender.sendMessage("You entered the argument ${option}")
 
             // You can find docs on this cool component text here

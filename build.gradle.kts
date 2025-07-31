@@ -52,6 +52,8 @@ dependencies {
     implementation("com.github.RAVINGAR.RavinAPI:module-kotlin:1.5.8")
     implementation("com.github.RAVINGAR.RavinAPI:gui:1.5.8")
 
+    implementation("com.charleskorn.kaml:kaml:0.85.0")
+
     compileOnly("org.jetbrains:annotations:23.1.0")
 
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
@@ -68,15 +70,15 @@ tasks {
     }
 
     jar {
-        archiveFileName.set("$name-parent.jar")
-        archiveBaseName.set("$name-parent")
+        archiveFileName.set("${project.name}-parent.jar")
+        archiveBaseName.set("${project.name}-parent")
         archiveVersion.set(null as String?)
         archiveClassifier.set("original")
     }
 
     shadowJar {
-        archiveFileName.set("$name.jar")
-        archiveBaseName.set(name)
+        archiveFileName.set("${project.name}.jar")
+        archiveBaseName.set(project.name)
         archiveVersion.set(null as String?)
         archiveClassifier.set("")
         relocate("com.ravingarinc.api", "$group.libs.api")
@@ -90,7 +92,7 @@ tasks {
     register<Copy>("copyToDev") {
         from(shadowJar)
         // todo change this to your test server directory
-        into(project.layout.projectDirectory.dir("../../Desktop/Programming/Servers/Latest/plugins"))
+        into(project.layout.projectDirectory.dir("C:/Users/robin/SpigotTestServer/TestServer/plugins"))
     }
 
     assemble {
@@ -124,11 +126,10 @@ tasks.withType<KotlinCompile> {
 
 bukkit {
 
-    name = "$name"
+    name = project.name
     version = project.version as String
     description = "Put the description here"
-    main = "$group.TestPlugin"
-
+    main = "${project.group}.TestPlugin"
     // API version (should be set for 1.13+)
     apiVersion = "1.20"
 
@@ -140,5 +141,11 @@ bukkit {
             description = "A description for spigot."
             usage = "Unknown argument. Try /test ?"
         }
+        register("warp") {
+            usage = "Stupid LOL"
+        }
+        register("setwarp")
+        register("warps")
+        register("delwarp")
     }
 }

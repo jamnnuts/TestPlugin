@@ -1,6 +1,6 @@
 package com.kalentire.test
 
-import com.kalentire.test.command.TestCommand
+import com.kalentire.test.command.*
 import com.kalentire.test.listener.TestListener
 import com.kalentire.test.module.TestModule
 import com.ravingarinc.api.module.RavinPluginKotlin
@@ -26,6 +26,10 @@ class TestPlugin : RavinPluginKotlin() {
     override fun loadCommands() {
         // for every command you register, you must add it to the top level build.gradle.kts at the bottom.
         TestCommand(this).register() // this is all that is needed to create a command.
+        WarpCommand(this).register()
+        SetWarpCommand(this).register()
+        WarpsCommand(this).register()
+        DeleteWarpCommand(this).register()
         // this code is executed after loadmodules()
     }
 
